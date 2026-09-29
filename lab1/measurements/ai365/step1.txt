@@ -1,0 +1,123 @@
+running measurements for step 1 (real measurement w/ mutex):
+
+	thread count = 1
+	ops/sec = 101687840.64
+
+	thread count = 2
+	ops/sec = 25630763.68
+
+	thread count = 3
+	ops/sec = 28646378.57
+
+	thread count = 4
+	ops/sec = 16948129.18
+
+	thread count = 5
+	ops/sec = 9082257.22
+
+	thread count = 6
+	ops/sec = 7151206.22
+
+	thread count = 7
+	ops/sec = 6747091.02
+
+	thread count = 8
+	ops/sec = 6774762.22
+
+	thread count = 9
+	ops/sec = 6494634.24
+
+	thread count = 10
+	ops/sec = 6390289.74
+
+	thread count = 11
+	ops/sec = 6255061.49
+
+	thread count = 12
+	ops/sec = 6114730.20
+
+	thread count = 13
+	ops/sec = 6067603.30
+
+	thread count = 14
+	ops/sec = 5878617.35
+
+	thread count = 15
+	ops/sec = 5793664.41
+
+	thread count = 16
+	ops/sec = 5711757.89
+
+	thread count = 17
+	ops/sec = 5697861.32
+
+	thread count = 18
+	ops/sec = 5676232.56
+
+	thread count = 19
+	ops/sec = 5526909.15
+
+	thread count = 20
+	ops/sec = 5514191.21
+
+running measurements for step 1 (empty code w/ mutex):
+
+	thread count = 1
+	ops/sec = 108036008.95
+
+	thread count = 2
+	ops/sec = 25673691.75
+
+	thread count = 3
+	ops/sec = 30903512.12
+
+	thread count = 4
+	ops/sec = 20366102.69
+
+	thread count = 5
+	ops/sec = 14709201.85
+
+	thread count = 6
+	ops/sec = 13233592.05
+
+	thread count = 7
+	ops/sec = 13999357.26
+
+	thread count = 8
+	ops/sec = 14311992.75
+
+	thread count = 9
+	ops/sec = 14230038.13
+
+	thread count = 10
+	ops/sec = 14148212.06
+
+	thread count = 11
+	ops/sec = 13968347.30
+
+	thread count = 12
+	ops/sec = 13774200.74
+
+	thread count = 13
+	ops/sec = 13827902.24
+
+	thread count = 14
+	ops/sec = 13735295.03
+
+	thread count = 15
+	ops/sec = 13672747.46
+
+	thread count = 16
+	ops/sec = 13338960.86
+
+	thread count = 17
+	ops/sec = 13541238.87
+
+	thread count = 18
+	ops/sec = 13418901.15
+
+	thread count = 19
+	ops/sec = 13433652.63
+
+	thread count = 20
+	ops/sec = 13631109.55

@@ -1,0 +1,4 @@
+Running measurements for step 0:
+
+	Thread count = 1
+	ops/sec = 566149454
