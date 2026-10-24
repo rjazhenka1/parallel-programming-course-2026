@@ -1,0 +1,72 @@
+running measurements for step 2:
+
+	thread count = 1
+	ops/sec = 40510322.26
+
+	thread count = 2
+	ops/sec = 15563483.04
+
+	thread count = 3
+	ops/sec = 8313695.83
+
+	thread count = 4
+	ops/sec = 8270834.31
+
+	thread count = 5
+	ops/sec = 6578849.88
+
+	thread count = 6
+	ops/sec = 5979712.15
+
+	thread count = 7
+	ops/sec = 5889031.57
+
+	thread count = 8
+	ops/sec = 5330701.37
+
+	thread count = 9
+	ops/sec = 5406751.85
+
+	thread count = 10
+	ops/sec = 4852700.80
+
+	thread count = 11
+	ops/sec = 5164107.78
+
+	thread count = 12
+	ops/sec = 5349988.36
+
+	thread count = 13
+	ops/sec = 5413353.77
+
+	thread count = 14
+	ops/sec = 5394042.56
+
+	thread count = 15
+	ops/sec = 5367843.75
+
+	thread count = 16
+	ops/sec = 4795766.65
+
+	thread count = 17
+	ops/sec = 4791089.23
+
+	thread count = 18
+	ops/sec = 4768459.04
+
+	thread count = 19
+	ops/sec = 5233488.71
+
+	thread count = 20
+	ops/sec = 4716229.07
+
+
+consistency check for step 2:
+
+	thread count = 4
+	total checks = 10000
+		sum(buckets) == count = 604
+		sum(buckets) < count = 9160
+		sum(buckets) > count = 236
+		recorded count = 170382
+		true call  count = 170382

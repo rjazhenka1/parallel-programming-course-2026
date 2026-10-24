@@ -77,9 +77,130 @@ int main(int argc, char **argv) {
 
         break;
     }
-    case 2:
-    case 3:
-    case 4:
+    case 2: {
+        {
+            std::cout << "running measurements for step 2:" << std::endl;
+            for (std::size_t thread_count = 1; thread_count <= nproc; thread_count++) {
+                std::cout << std::endl;
+                std::cout << "\tthread count = " << thread_count << std::endl;
+
+                ZipfRandom<uint64_t> zipf_random(seed);
+                const auto values = zipf_random.generate(required_values);
+                StripedMutexMetricsCollector collector;
+
+                const auto result = measure_point(collector, values, thread_count);
+                std::cout << "\tops/sec = " << std::fixed << std::setprecision(2) << result.ops << std::endl;
+            }
+        }
+        {
+            std::cout << std::endl << std::endl << "consistency check for step 2:" << std::endl;
+            const uint64_t thread_count = 4;
+            std::cout << std::endl;
+            std::cout << "\tthread count = " << thread_count << std::endl;
+
+            ZipfRandom<uint64_t> zipf_random(seed);
+            const auto values = zipf_random.generate(required_values);
+            StripedMutexMetricsCollector collector;
+
+            const auto result = consistency_check(collector, values, thread_count);
+            std::cout << "\ttotal checks = " << result.total_check_count << std::endl;
+            std::cout << "\t\tsum(buckets) == count = " << result.check_equal_count << std::endl;
+            std::cout << "\t\tsum(buckets) < count = " << result.check_less_count << std::endl;
+            std::cout << "\t\tsum(buckets) > count = " << result.check_greater_count << std::endl;
+            std::cout << "\t\trecorded count = " << result.collector_snapshot.count << std::endl;
+            std::cout << "\t\ttrue call  count = " << result.true_call_count << std::endl;
+            break;
+        }
+    }
+    case 3: {
+        {
+            std::cout << "running measurements for step 3:" << std::endl;
+            for (std::size_t thread_count = 1; thread_count <= nproc; thread_count++) {
+                std::cout << std::endl;
+                std::cout << "\tthread count = " << thread_count << std::endl;
+
+                ZipfRandom<uint64_t> zipf_random(seed);
+                const auto values = zipf_random.generate(required_values);
+                ThreadLocalCollector collector;
+
+                const auto result = measure_point(collector, values, thread_count);
+                std::cout << "\tops/sec = " << std::fixed << std::setprecision(2) << result.ops << std::endl;
+            }
+        }
+
+        {
+            std::cout << std::endl << std::endl << "consistency check for step 3:" << std::endl;
+            const uint64_t thread_count = 4;
+            std::cout << std::endl;
+            std::cout << "\tthread count = " << thread_count << std::endl;
+
+            ZipfRandom<uint64_t> zipf_random(seed);
+            const auto values = zipf_random.generate(required_values);
+            ThreadLocalCollector collector;
+
+            const auto result = consistency_check(collector, values, thread_count);
+            std::cout << "\ttotal checks = " << result.total_check_count << std::endl;
+            std::cout << "\t\tsum(buckets) == count = " << result.check_equal_count << std::endl;
+            std::cout << "\t\tsum(buckets) < count = " << result.check_less_count << std::endl;
+            std::cout << "\t\tsum(buckets) > count = " << result.check_greater_count << std::endl;
+            std::cout << "\t\trecorded count = " << result.collector_snapshot.count << std::endl;
+            std::cout << "\t\ttrue call  count = " << result.true_call_count << std::endl;
+            break;
+        }
+    }
+    case 4: {
+        {
+            std::cout << "running measurements for step 4:" << std::endl;
+            for (std::size_t thread_count = 1; thread_count <= nproc; thread_count++) {
+                std::cout << std::endl;
+                std::cout << "\tthread count = " << thread_count << std::endl;
+
+                ZipfRandom<uint64_t> zipf_random(seed);
+                const auto values = zipf_random.generate(required_values);
+                DoubleBufferedMetricsCollector collector;
+
+                const auto result = measure_point(collector, values, thread_count);
+                std::cout << "\tops/sec = " << std::fixed << std::setprecision(2) << result.ops << std::endl;
+            }
+        }
+        {
+            std::cout << std::endl << std::endl << "consistency check for step 4:" << std::endl;
+            const uint64_t thread_count = 4;
+            std::cout << std::endl;
+            std::cout << "\tthread count = " << thread_count << std::endl;
+
+            ZipfRandom<uint64_t> zipf_random(seed);
+            const auto values = zipf_random.generate(required_values);
+            DoubleBufferedMetricsCollector collector;
+
+            const auto result = consistency_check(collector, values, thread_count);
+            std::cout << "\ttotal checks = " << result.total_check_count << std::endl;
+            std::cout << "\t\tsum(buckets) == count = " << result.check_equal_count << std::endl;
+            std::cout << "\t\tsum(buckets) < count = " << result.check_less_count << std::endl;
+            std::cout << "\t\tsum(buckets) > count = " << result.check_greater_count << std::endl;
+            std::cout << "\t\trecorded count = " << result.collector_snapshot.count << std::endl;
+            std::cout << "\t\ttrue call  count = " << result.true_call_count << std::endl;
+        }
+        {
+            std::cout << std::endl << std::endl << "consistency check for step 4 (no active check):" << std::endl;
+            const uint64_t thread_count = 4;
+            std::cout << std::endl;
+            std::cout << "\tthread count = " << thread_count << std::endl;
+
+            ZipfRandom<uint64_t> zipf_random(seed);
+            const auto values = zipf_random.generate(required_values);
+            ExperimentalDoubleBufferedMetricsCollector collector;
+
+            const auto result = consistency_check(collector, values, thread_count);
+            std::cout << "\ttotal checks = " << result.total_check_count << std::endl;
+            std::cout << "\t\tsum(buckets) == count = " << result.check_equal_count << std::endl;
+            std::cout << "\t\tsum(buckets) < count = " << result.check_less_count << std::endl;
+            std::cout << "\t\tsum(buckets) > count = " << result.check_greater_count << std::endl;
+            std::cout << "\t\trecorded count = " << result.collector_snapshot.count << std::endl;
+            std::cout << "\t\ttrue call  count = " << result.true_call_count << std::endl;
+            break;
+        }
+    }
     default:
         std::cerr << "unknown step: " << step << "\n";
         break;
